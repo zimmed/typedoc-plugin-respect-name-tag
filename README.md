@@ -1,9 +1,10 @@
 # About
 
 
-TypeDoc plugin to force the use of the name declared in &#64;name annotation. 
-Any entity that with a jsDoc comment containing a `@name` tag with a value
-will be named like that. 
+TypeDoc plugin to force the use of the @name tag to declare entity names. 
+
+Any entity with a jsDoc comment containing a `@name` tag with a valid value
+will be named like that by TypeDoc instead of using the original entity name. 
 
 For example, the following class declares a an event member which, thanks to this 
 plugin will be named `before:add-to-cart`. Without this plugin TypeDoc will name 
