@@ -16,4 +16,5 @@ yarn-debug.log*
 yarn-error.log*
 test/out
 test/ast.json
+test/ast-without.json
 newProject

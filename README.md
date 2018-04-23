@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/cancerberoSgx/typedoc-plugin-respect-name-tag.png?branch=master)](https://travis-ci.org/cancerberoSgx/typedoc-plugin-respect-name-tag) [![appveyor Build status](https://ci.appveyor.com/api/projects/status/w3ynfan159ejobkv/branch/master?svg=true)](https://ci.appveyor.com/project/cancerberoSgx/typedoc-plugin-respect-name-tag/branch/master) [![codecov](https://codecov.io/gh/cancerberoSgx/typedoc-plugin-respect-name-tag/branch/master/graph/badge.svg)](https://codecov.io/gh/cancerberoSgx/typedoc-plugin-respect-name-tag/tree/master/src) [![dependencies](https://david-dm.org/cancerberosgx/typedoc-plugin-respect-name-tag/status.svg)](https://david-dm.org/cancerberosgx/typedoc-plugin-respect-name-tag) [![devDependencies](https://david-dm.org/cancerberosgx/typedoc-plugin-respect-name-tag/dev-status.svg)](https://david-dm.org/cancerberosgx/typedoc-plugin-respect-name-tag-dev#info=devDependencies)
+
+
 # About
 
 [TypeDoc](http://typedoc.org) plugin to enforce the use of the `@name` tag to 

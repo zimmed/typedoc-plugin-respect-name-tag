@@ -5,19 +5,19 @@ export class Class1{
   /**
    * doc de prop
    */
-  color: string
+  color: string;
   /**
    * doc de evento
    * @event
    * @name customEvent
    */
-  addListener(name:string, listener:(data)=>void):void{
+  addListener(name:string, listener:(data) => void):void {
 
   }
   /**
    * doc de method1
    */
-  method1(){}
+  method1() {}
 }
 
 
@@ -33,16 +33,16 @@ export interface Cart {
    * unless the promise is resolved (could be useful to validate with third parties 
    * providers)
    */
-  addListener(listener:(items:IItem[], transaction:Promise<ITransaction>)=>Promise<boolean>):void
+  addListener(listener:(items:IItem[], transaction:Promise<ITransaction>) => Promise<boolean>):void;
 }
 
 export interface IItem{
-  quantity: number
-  options: number[]
-  id: number
+  quantity: number;
+  options: number[];
+  id: number;
 }
 
 export interface ITransaction{
-  id: string
-  lines: IItem[]
+  id: string;
+  lines: IItem[];
 }
