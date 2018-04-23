@@ -42,7 +42,6 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      * @param context  The context object describing the current state the converter is in.
      */
     onBegin(context) {
-        debugger;
         this.respectThisNames = [];
     }
     /**
@@ -54,38 +53,15 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      */
     onDeclaration(context, reflection, node) {
         if (node.symbol && node.jsDoc) {
-            debugger;
             let tags = [];
             node.jsDoc.forEach(node => tags = tags.concat((node.tags || [])
-                .filter(tag => tag.tagName && tag.tagName.text == 'name')
-            // .map(tag=>({text: tag.tagName.text, escapedText: tag.tagName.escapedText, comment: tag.comment}))
-            ));
+                .filter(tag => tag.tagName && tag.tagName.text == 'name')));
             if (tags.length) {
                 // TODO. what if tags[0].length>1 ? that could mean user write two @name tags - we are using the last one
                 this.respectThisNames.push({ renameTo: tags[tags.length - 1].comment, reflection });
-                debugger;
-                console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
+                // console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
             }
         }
-        // if (reflection.kindOf(ReflectionKind.ExternalModule)) {
-        //   let comment = getRawComment(node);
-        //   // Look for @module
-        //   let match = /@module\s+([\w\.\-_/@"]+)/.exec(comment);
-        //   if (match) {
-        //     // Look for @preferred
-        //     let preferred = /@preferred/.exec(comment);
-        //     // Set up a list of renames operations to perform when the resolve phase starts
-        //     this.moduleRenames.push({
-        //       renameTo: match[1],
-        //       preferred: preferred != null,
-        //       reflection: <ContainerReflection>reflection,
-        //     });
-        //   }
-        // }
-        // if (reflection.comment) {
-        //   CommentPlugin.removeTags(reflection.comment, 'module');
-        //   CommentPlugin.removeTags(reflection.comment, 'preferred');
-        // }
     }
     /**
      * Triggered when the converter begins resolving a project.
@@ -93,50 +69,10 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      * @param context  The context object describing the current state the converter is in.
      */
     onBeginResolve(context) {
-        debugger;
-        console.log('entering onbeginresolve');
         this.respectThisNames.forEach(item => {
-            console.log('onbeginresolve ', item.renameTo, item.reflection.name);
+            // console.log('onbeginresolve ', item.renameTo, item.reflection.name)
             item.reflection.name = item.renameTo;
         });
-        // let projRefs = context.project.reflections;
-        // let refsArray: Reflection[] = Object.keys(projRefs).reduce((m, k) => {
-        //   m.push(projRefs[k]);
-        //   return m;
-        // }, []);
-        // // Process each rename
-        // this.moduleRenames.forEach(item => {
-        //   let renaming = <ContainerReflection>item.reflection;
-        //   // Find an existing module that already has the "rename to" name.  Use it as the merge target.
-        //   let mergeTarget = <ContainerReflection>refsArray.filter(
-        //     ref => ref.kind === renaming.kind && ref.name === item.renameTo,
-        //   )[0];
-        //   // If there wasn't a merge target, just change the name of the current module and exit.
-        //   if (!mergeTarget) {
-        //     renaming.name = item.renameTo;
-        //     return;
-        //   }
-        //   if (!mergeTarget.children) {
-        //     mergeTarget.children = [];
-        //   }
-        //   // Since there is a merge target, relocate all the renaming module's children to the mergeTarget.
-        //   let childrenOfRenamed = refsArray.filter(ref => ref.parent === renaming);
-        //   childrenOfRenamed.forEach((ref: Reflection) => {
-        //     // update links in both directions
-        //     ref.parent = mergeTarget;
-        //     mergeTarget.children.push(<any>ref);
-        //   });
-        //   // If @preferred was found on the current item, update the mergeTarget's comment
-        //   // with comment from the renaming module
-        //   if (item.preferred) mergeTarget.comment = renaming.comment;
-        //   // Now that all the children have been relocated to the mergeTarget, delete the empty module
-        //   // Make sure the module being renamed doesn't have children, or they will be deleted
-        //   if (renaming.children) renaming.children.length = 0;
-        //   CommentPlugin.removeReflection(context.project, renaming);
-        //   // Remove @module and @preferred from the comment, if found.
-        //   CommentPlugin.removeTags(mergeTarget.comment, 'module');
-        //   CommentPlugin.removeTags(mergeTarget.comment, 'preferred');
-        // });
     }
 };
 RespectNameTagPlugin = __decorate([

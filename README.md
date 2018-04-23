@@ -43,7 +43,7 @@ typedoc
 If unsure, you can always run typedoc with `--plugin typedoc-plugin-respect-name-tag` argument to enforce plugin's execution. 
 
 
-TODO: 
+# TODO: 
 
- * test
+ * test not only for events but for clases, properties, etc
  * validate @name's value - should be valid ts identifier. 
