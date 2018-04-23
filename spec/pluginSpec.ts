@@ -3,10 +3,11 @@ import * as shell from 'shelljs';
 describe('plugin ', () => {
  
   beforeAll(() => {
-    shell.rm('-rf', 'test/node_modules', 'test/out', 'test/ast.json', 'test/package-lock.json newProject');
+    shell.rm('-rf', 'test/node_modules', 'test/out', 'test/ast.json', 'test/package-lock.json', 'newProject');
   });
+  
   afterAll(() => {
-    shell.rm('-rf', 'test/node_modules', 'test/out', 'test/ast.json', 'test/package-lock.json newProject');
+    shell.rm('-rf', 'test/node_modules', 'test/out', 'test/ast.json', 'test/package-lock.json', 'newProject');
   });
 
   it('should enforce events annotated with @name where typedoc dont do that', () => {
