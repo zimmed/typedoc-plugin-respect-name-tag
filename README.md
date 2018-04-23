@@ -1,54 +1,35 @@
 # About
 
-JavaScript (and its family) has no standard tool for documentation and there are many tools with different perspective. This is a collection of working node.js projects demonstrating best practices of complex semantics in such tools. 
 
-The following are the examples generated:
+This plugin will force TypeDoc to use the name declared in &#64;name annotation. For 
+example, the following class declares a an event member named `before:add-to-cart` 
+although the associated node is a method with the name `addListener`. The method 
+signature will still be used for the event, i.e. the callback function signature: 
 
+ @example
+```ts
 
-# events-001
-
-Best practices for documenting events, particularly subclasses of node.js `EventEmitter`
-
-#### [Tutorial, descriptions and code](https://cancerberosgx.github.io/javascript-documentation-examples/examples/events-001/docs/docco/src/index.html)
-
-#### [Final Output](https://cancerberosgx.github.io/javascript-documentation-examples/examples/events-001/docs/interfaces/idownloadeventemitter.html#on)
-
-
-
-
-# Install and generate all the docs
-
-```sh
-yarn 
-yarn run-all doc
+export interface Cart {
+/**
+* Register given listener function to be notified when the user add the items to the cart 
+* @event
+* @name before:add-to-cart
+* @param listener accepts the items that the user had intention to add to the cart and a promise that will be resolved when the transaction is fulfilled or rejected otherwise. Also the listener have the possibility to asynchronously validate the transaction yb returning a promise. If so the transaction won't start unless the promise is resolved (could be useful to validate with third parties providers)
+*/
+addListener(listener:(items:IItem[], transaction:Promise<Transaction>)=>Promise<boolean>):void
+}
 ```
 
-Note with `yarn run-all X` you run X command in all yarn workspaces
+# Usage
 
+```sh
+npm install --save-dev typedoc-plugin-respect-name-tag
+```
 
+Typedoc has the ability to discover and load typedoc plugins found in node_modules. Simply install the plugin and run typedoc.
+```
+npm install --save typedoc-plugin-external-module-name
+typedoc
+```
 
-# Concepts and technologies
-
-Some concepts that are hard to document (I'm learning and discussing best practices in this project) : 
-
- * Events EventEmitters and EventListeners particularly best practices for descibing complex hierarchies.
- 
-Some technologies: 
-
- * jsdoc (and templates)
- * typedoc (and templates)
- * short-jsdoc
- * JavaScript
- * TypeScript
- * Flow
-
-
-# TODO: things I don't know how to do, yet
-
-## typedoc
-
- * "this method trigger the event foo of that class". can do it in jsdoc but not in typedoc
-
-*
-    // TODO: IDEA: what if we biuld a event emitter with generics that doesn't 
-    // extends node event emitter but just delegate the methods to a property???
+If unsure, you can always run typedoc with `--plugin typedoc-plugin-respect-name-tag` argument to enforce plugin's execution. 

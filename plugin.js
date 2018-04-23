@@ -8,12 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 const components_1 = require("typedoc/dist/lib/converter/components");
 const converter_1 = require("typedoc/dist/lib/converter/converter");
-// import { getRawComment } from './getRawComment';
 /**
  * This plugin will force TypeDoc to use the name declared in &#64;name annotation. For
  * example, the following class declares a an event member named `before:add-to-cart`
  * although the associated node is a method with the name `addListener`. The method
- * signature will still be used for the event, i.e. te callback function signature:
+ * signature will still be used for the event, i.e. the callback function signature:
  *
  *  @example
  * ```ts
@@ -32,7 +31,7 @@ const converter_1 = require("typedoc/dist/lib/converter/converter");
 let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.ConverterComponent {
     initialize() {
         this.listenTo(this.owner, {
-            // [Converter.EVENT_BEGIN]: this.onBegin,
+            [converter_1.Converter.EVENT_BEGIN]: this.onBegin,
             [converter_1.Converter.EVENT_CREATE_DECLARATION]: this.onDeclaration,
             [converter_1.Converter.EVENT_RESOLVE_BEGIN]: this.onBeginResolve,
         });
@@ -43,6 +42,7 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      * @param context  The context object describing the current state the converter is in.
      */
     onBegin(context) {
+        debugger;
         this.respectThisNames = [];
     }
     /**
@@ -54,6 +54,7 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      */
     onDeclaration(context, reflection, node) {
         if (node.symbol && node.jsDoc) {
+            debugger;
             let tags = [];
             node.jsDoc.forEach(node => tags = tags.concat((node.tags || [])
                 .filter(tag => tag.tagName && tag.tagName.text == 'name')
@@ -62,15 +63,10 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
             if (tags.length) {
                 // TODO. what if tags[0].length>1 ? that could mean user write two @name tags - we are using the last one
                 this.respectThisNames.push({ renameTo: tags[tags.length - 1].comment, reflection });
-                // console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
+                debugger;
+                console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
             }
-            // const tags = node.jsDoc.filter(n=>n.tags && n.tags.find(t=>t.tagName && t.tagName.name))
-            // (node.jsDoc||[]).forEach(node=>console.log((node.tags||[]).map(tag=>tag.tagName.text)))
-            // .for
-            //   console.log((node2.tags||[]).map(tag=>tag.tagName.text)
-            // ))
         }
-        // debugger;
         // if (reflection.kindOf(ReflectionKind.ExternalModule)) {
         //   let comment = getRawComment(node);
         //   // Look for @module
@@ -97,6 +93,12 @@ let RespectNameTagPlugin = class RespectNameTagPlugin extends components_1.Conve
      * @param context  The context object describing the current state the converter is in.
      */
     onBeginResolve(context) {
+        debugger;
+        console.log('entering onbeginresolve');
+        this.respectThisNames.forEach(item => {
+            console.log('onbeginresolve ', item.renameTo, item.reflection.name);
+            item.reflection.name = item.renameTo;
+        });
         // let projRefs = context.project.reflections;
         // let refsArray: Reflection[] = Object.keys(projRefs).reduce((m, k) => {
         //   m.push(projRefs[k]);

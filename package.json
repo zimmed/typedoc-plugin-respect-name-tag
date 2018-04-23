@@ -8,17 +8,20 @@
     "watch": " tsc --watch",
     "build": "tsc"
   },
-  "keywords": ["TypeDoc", "TypeScript", "JavaScript", "jsdoc", "documentation"],
-  "author": "",
+  "keywords": [
+    "TypeDoc",
+    "TypeScript",
+    "JavaScript",
+    "jsdoc",
+    "documentation"
+  ],
+  "author": "Sebastián Gurin",
   "license": "ISC",
   "peerDependencies": {
-    "typedoc": ">=0.7 <1.0"
+    "typedoc": ">=0.7 <1.11.1"
   },
   "devDependencies": {
-    "@types/handlebars": "^4.0.37",
-    "@uirouter/publish-scripts": "^2.3.3",
-    "husky": "^0.14.3",
     "typedoc": "~0.11.1",
-    "typescript": "~2.7.1"
+    "typescript": "^2.8.3"
   }
 }

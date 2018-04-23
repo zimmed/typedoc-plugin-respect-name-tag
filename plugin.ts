@@ -4,13 +4,12 @@ import { Converter } from 'typedoc/dist/lib/converter/converter';
 import { Context } from 'typedoc/dist/lib/converter/context';
 import { CommentPlugin } from 'typedoc/dist/lib/converter/plugins/CommentPlugin';
 import { ContainerReflection } from 'typedoc/dist/lib/models/reflections/container';
-// import { getRawComment } from './getRawComment';
 
 /**
  * This plugin will force TypeDoc to use the name declared in &#64;name annotation. For 
  * example, the following class declares a an event member named `before:add-to-cart` 
  * although the associated node is a method with the name `addListener`. The method 
- * signature will still be used for the event, i.e. te callback function signature: 
+ * signature will still be used for the event, i.e. the callback function signature: 
  * 
  *  @example
  * ```ts
@@ -36,7 +35,7 @@ export class RespectNameTagPlugin extends ConverterComponent {
 
   initialize() {
     this.listenTo(this.owner, {
-      // [Converter.EVENT_BEGIN]: this.onBegin,
+      [Converter.EVENT_BEGIN]: this.onBegin,
       [Converter.EVENT_CREATE_DECLARATION]: this.onDeclaration,
       [Converter.EVENT_RESOLVE_BEGIN]: this.onBeginResolve,
     });
@@ -48,6 +47,7 @@ export class RespectNameTagPlugin extends ConverterComponent {
    * @param context  The context object describing the current state the converter is in.
    */
   private onBegin(context: Context) {
+    debugger
     this.respectThisNames = [];
   }
 
@@ -60,7 +60,7 @@ export class RespectNameTagPlugin extends ConverterComponent {
    */
   private onDeclaration(context: Context, reflection: Reflection, node?) {
     if(node.symbol && node.jsDoc){
-
+debugger
       let tags =[]
       node.jsDoc.forEach(node=>
         tags = tags.concat(
@@ -73,19 +73,12 @@ export class RespectNameTagPlugin extends ConverterComponent {
       if(tags.length){
         // TODO. what if tags[0].length>1 ? that could mean user write two @name tags - we are using the last one
         this.respectThisNames.push({renameTo: tags[tags.length-1].comment, reflection})
-        // console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
+        debugger;
+        console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
       }
 
-      // const tags = node.jsDoc.filter(n=>n.tags && n.tags.find(t=>t.tagName && t.tagName.name))
-
-      // (node.jsDoc||[]).forEach(node=>console.log((node.tags||[]).map(tag=>tag.tagName.text)))
-      
-      // .for
-      //   console.log((node2.tags||[]).map(tag=>tag.tagName.text)
-      // ))
     }
 
-// debugger;
     // if (reflection.kindOf(ReflectionKind.ExternalModule)) {
     //   let comment = getRawComment(node);
     //   // Look for @module
@@ -114,6 +107,12 @@ export class RespectNameTagPlugin extends ConverterComponent {
    * @param context  The context object describing the current state the converter is in.
    */
   private onBeginResolve(context: Context) {
+    debugger;
+    console.log('entering onbeginresolve')
+    this.respectThisNames.forEach(item=>{
+      console.log('onbeginresolve ', item.renameTo, item.reflection.name)
+      item.reflection.name = item.renameTo
+    })
     // let projRefs = context.project.reflections;
     // let refsArray: Reflection[] = Object.keys(projRefs).reduce((m, k) => {
     //   m.push(projRefs[k]);
