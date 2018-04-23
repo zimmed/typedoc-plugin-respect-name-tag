@@ -1,0 +1,566 @@
+{
+	"id": 0,
+	"name": "test",
+	"kind": 0,
+	"flags": {},
+	"children": [
+		{
+			"id": 1,
+			"name": "\"sample1\"",
+			"kind": 1,
+			"kindString": "External module",
+			"flags": {
+				"isExported": true
+			},
+			"originalName": "/home/sg/git/typedoc-plugin-respect-name-tag/test/sample1.ts",
+			"children": [
+				{
+					"id": 2,
+					"name": "Class1",
+					"kind": 128,
+					"kindString": "Class",
+					"flags": {
+						"isExported": true
+					},
+					"comment": {
+						"shortText": "doc de la clase"
+					},
+					"children": [
+						{
+							"id": 4,
+							"name": "addListener",
+							"kind": 8388608,
+							"kindString": "Event",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 5,
+									"name": "addListener",
+									"kind": 8388608,
+									"kindString": "Event",
+									"flags": {},
+									"comment": {
+										"shortText": "doc de evento",
+										"tags": [
+											{
+												"tag": "name",
+												"text": "customEvent\n"
+											}
+										]
+									},
+									"parameters": [
+										{
+											"id": 6,
+											"name": "name",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 7,
+											"name": "listener",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 8,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 9,
+															"name": "__call",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"parameters": [
+																{
+																	"id": 10,
+																	"name": "data",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "intrinsic",
+																		"name": "any"
+																	}
+																}
+															],
+															"type": {
+																"type": "intrinsic",
+																"name": "void"
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "sample1.ts",
+															"line": 14,
+															"character": 36
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 14,
+									"character": 13
+								}
+							]
+						},
+						{
+							"id": 3,
+							"name": "color",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"comment": {
+								"shortText": "doc de prop"
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 8,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 11,
+							"name": "method1",
+							"kind": 2048,
+							"kindString": "Method",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 12,
+									"name": "method1",
+									"kind": 4096,
+									"kindString": "Call signature",
+									"flags": {},
+									"comment": {
+										"shortText": "doc de method1"
+									},
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 20,
+									"character": 9
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Events",
+							"kind": 8388608,
+							"children": [
+								4
+							]
+						},
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								3
+							]
+						},
+						{
+							"title": "Methods",
+							"kind": 2048,
+							"children": [
+								11
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "sample1.ts",
+							"line": 4,
+							"character": 19
+						}
+					]
+				},
+				{
+					"id": 13,
+					"name": "Cart",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 14,
+							"name": "addListener",
+							"kind": 8388608,
+							"kindString": "Event",
+							"flags": {
+								"isExported": true
+							},
+							"signatures": [
+								{
+									"id": 15,
+									"name": "addListener",
+									"kind": 8388608,
+									"kindString": "Event",
+									"flags": {},
+									"comment": {
+										"shortText": "Register given listener function to be notified when the user add the items to the cart",
+										"tags": [
+											{
+												"tag": "name",
+												"text": "before:add-to-cart"
+											}
+										]
+									},
+									"parameters": [
+										{
+											"id": 16,
+											"name": "listener",
+											"kind": 32768,
+											"kindString": "Parameter",
+											"flags": {},
+											"comment": {
+												"text": "accepts the items that the user had intention to add to the cart and\na promise that will be resolved when the transaction is fulfilled or rejected\notherwise. Also the listener have the possibility to asynchronously validate\nthe transaction yb returning a promise. If so the transaction won't start\nunless the promise is resolved (could be useful to validate with third parties\nproviders)\n"
+											},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 17,
+													"name": "__type",
+													"kind": 65536,
+													"kindString": "Type literal",
+													"flags": {},
+													"signatures": [
+														{
+															"id": 18,
+															"name": "__call",
+															"kind": 4096,
+															"kindString": "Call signature",
+															"flags": {},
+															"parameters": [
+																{
+																	"id": 19,
+																	"name": "items",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "array",
+																		"elementType": {
+																			"type": "reference",
+																			"name": "IItem",
+																			"id": 21
+																		}
+																	}
+																},
+																{
+																	"id": 20,
+																	"name": "transaction",
+																	"kind": 32768,
+																	"kindString": "Parameter",
+																	"flags": {},
+																	"type": {
+																		"type": "reference",
+																		"name": "Promise",
+																		"typeArguments": [
+																			{
+																				"type": "reference",
+																				"name": "ITransaction",
+																				"id": 25
+																			}
+																		]
+																	}
+																}
+															],
+															"type": {
+																"type": "reference",
+																"name": "Promise",
+																"typeArguments": [
+																	{
+																		"type": "intrinsic",
+																		"name": "boolean"
+																	}
+																]
+															}
+														}
+													],
+													"sources": [
+														{
+															"fileName": "sample1.ts",
+															"line": 36,
+															"character": 23
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							],
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 36,
+									"character": 13
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Events",
+							"kind": 8388608,
+							"children": [
+								14
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "sample1.ts",
+							"line": 24,
+							"character": 21
+						}
+					]
+				},
+				{
+					"id": 21,
+					"name": "IItem",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 24,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 42,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						},
+						{
+							"id": 23,
+							"name": "options",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 41,
+									"character": 9
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "number"
+								}
+							}
+						},
+						{
+							"id": 22,
+							"name": "quantity",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 40,
+									"character": 10
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "number"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								24,
+								23,
+								22
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "sample1.ts",
+							"line": 39,
+							"character": 22
+						}
+					]
+				},
+				{
+					"id": 25,
+					"name": "ITransaction",
+					"kind": 256,
+					"kindString": "Interface",
+					"flags": {
+						"isExported": true
+					},
+					"children": [
+						{
+							"id": 26,
+							"name": "id",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 46,
+									"character": 4
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 27,
+							"name": "lines",
+							"kind": 1024,
+							"kindString": "Property",
+							"flags": {
+								"isExported": true
+							},
+							"sources": [
+								{
+									"fileName": "sample1.ts",
+									"line": 47,
+									"character": 7
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"name": "IItem",
+									"id": 21
+								}
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Properties",
+							"kind": 1024,
+							"children": [
+								26,
+								27
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "sample1.ts",
+							"line": 45,
+							"character": 29
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"kind": 128,
+					"children": [
+						2
+					]
+				},
+				{
+					"title": "Interfaces",
+					"kind": 256,
+					"children": [
+						13,
+						21,
+						25
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "sample1.ts",
+					"line": 1,
+					"character": 0
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "External modules",
+			"kind": 1,
+			"children": [
+				1
+			]
+		}
+	]
+}

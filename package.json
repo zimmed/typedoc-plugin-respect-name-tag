@@ -4,7 +4,7 @@
   "description": "TypeDoc plugin to enforce the use of the @name tag to declare entity names. ",
   "main": "plugin.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",
     "watch": " tsc --watch",
     "build": "tsc",
     "prepare": "tsc"

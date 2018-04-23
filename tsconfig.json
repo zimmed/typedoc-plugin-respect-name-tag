@@ -6,7 +6,8 @@
     "target": "es2017",
     "outDir": "./",
     "sourceMap": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true, 
+    "baseUrl": "."
   },
   "files": [
     "plugin.ts"
