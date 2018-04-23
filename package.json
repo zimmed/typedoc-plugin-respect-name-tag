@@ -1,12 +1,13 @@
 {
   "name": "typedoc-plugin-respect-name-tag",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "TypeDoc plugin to enforce the use of the @name tag to declare entity names. ",
+  "main": "plugin.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": " tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "tsc"
   },
   "keywords": [
     "TypeDoc",
@@ -16,11 +17,18 @@
     "documentation"
   ],
   "author": "Sebastián Gurin",
-  "license": "ISC",
+  "license": "MIT",
   "peerDependencies": {
     "typedoc": ">=0.7 <1.11.1"
   },
   "devDependencies": {
+    "@types/jasmine": "^2.8.6",
+    "jasmine": "^3.1.0",
+    "shelljs": "^0.8.1",
+    "ts-node": "^6.0.0",
+    "tsconfig-paths": "^3.3.1",
+    "tslint": "^5.9.1",
+    "tslint-config-airbnb": "^5.8.0",
     "typedoc": "~0.11.1",
     "typescript": "^2.8.3"
   }

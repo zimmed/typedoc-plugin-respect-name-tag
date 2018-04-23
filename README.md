@@ -1,7 +1,7 @@
 # About
 
-
-TypeDoc plugin to force the use of the @name tag to declare entity names. 
+[TypeDoc](http://typedoc.org) plugin to enforce the use of the `@name` tag to 
+declare entity names. 
 
 Any entity with a jsDoc comment containing a `@name` tag with a valid value
 will be named like that by TypeDoc instead of using the original entity name. 

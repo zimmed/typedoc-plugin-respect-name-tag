@@ -2,16 +2,15 @@ import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/compon
 import { Converter } from 'typedoc/dist/lib/converter/converter';
 import { Reflection } from 'typedoc/dist/lib/models/reflections/abstract';
 import { Context } from 'typedoc/dist/lib/converter/context';
-
 /**
- * This plugin will force TypeDoc to use the name declared in &#64;name annotation. For 
+ * This plugin will force TypeDoc to use the name declared in @name annotation. For 
  * example, the following class declares a an event member named `before:add-to-cart` 
  * although the associated node is a method with the name `addListener`. The method 
  * signature will still be used for the event, i.e. the callback function signature: 
  * 
  *  @example
  * ```ts
- * TODO: check this code! and add missing sample documenation for paarms promise , return, etc
+ * TODO: check this code! and add missing sample documentation for params promise , return, etc
  * interface Cart {
  *  &#47;**
  *   * Register given listener function to be notified when the user add the items to the cart 
@@ -25,9 +24,7 @@ import { Context } from 'typedoc/dist/lib/converter/context';
  */
 @Component({ name: 'respect-name-tag' })
 export class RespectNameTagPlugin extends ConverterComponent {
-
   private respectThisNames:RespectNameTagRename[]
-
   initialize() {
     this.listenTo(this.owner, {
       [Converter.EVENT_BEGIN]: this.onBegin,
@@ -61,11 +58,9 @@ export class RespectNameTagPlugin extends ConverterComponent {
           .filter(tag=>tag.tagName && tag.tagName.text=='name')
         )
       );
-
       if(tags.length){
         // TODO. what if tags[0].length>1 ? that could mean user write two @name tags - we are using the last one
         this.respectThisNames.push({renameTo: tags[tags.length-1].comment, reflection})
-        // console.log(tags.length + ` ${reflection.name} has tag name with value ${tags[0].comment}`);
       }
     }
   }
@@ -77,7 +72,6 @@ export class RespectNameTagPlugin extends ConverterComponent {
    */
   private onBeginResolve(context: Context) {
     this.respectThisNames.forEach(item=>{
-      // console.log('onbeginresolve ', item.renameTo, item.reflection.name)
       item.reflection.name = item.renameTo
     })
   }
@@ -87,3 +81,9 @@ interface RespectNameTagRename {
   renameTo: string;
   reflection: Reflection; // ContainerReflection
 }
+
+// Finally we export the plugin class as a TypeDoc Plugin - this is we register it as a 
+// TypeDoc component with our name 'respect-name-tag'
+export default function(PluginHost) {
+  PluginHost.owner.converter.addComponent('respect-name-tag', RespectNameTagPlugin);
+};
