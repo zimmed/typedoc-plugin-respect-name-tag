@@ -4,21 +4,18 @@
     "allowJs": true,
     "module": "commonjs",
     "target": "es5",
-    "outDir": ".",
+    "outDir": "dist",
     "sourceMap": true,
-    "experimentalDecorators": true, 
-    "baseUrl": ".",
+    "experimentalDecorators": true,
     "declaration": true,
-    "declarationDir": ".",
+    "declarationDir": "dist",
     "downlevelIteration": true,
     "lib": ["esnext"],
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "files": [
-    "plugin.ts"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules"
   ],

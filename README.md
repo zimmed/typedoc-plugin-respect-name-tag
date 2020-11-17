@@ -1,4 +1,14 @@
-# About
+# typedoc-plugin-respect-name-tag 1.2.0
+
+## Forked to fix bugs and clean up repo
+
+- Fixed bug when using with typedoc >= 0.19 (node.symbol referenced when node is undefined)
+- Removed broken test suite
+- Updated library dependencies
+- Restructured repo to use src/ and /dist folders
+- Configured to publish to github's NPM.
+
+## About (from original readme)
 
 [TypeDoc](http://typedoc.org) plugin to enforce the use of the `@name` tag to
 declare entity names.
@@ -24,31 +34,25 @@ export interface Cart {
    * unless the promise is resolved (could be useful to validate with third parties
    * providers)
    */
-  addListener(
-    listener: (
-      items: IItem[],
-      transaction: Promise<ITransaction>
-    ) => Promise<boolean>
-  ): void;
+  addListener(listener: (items: IItem[], transaction: Promise<ITransaction>) => Promise<boolean>): void;
 }
 ```
 
-# Usage
+## Usage (modified from original readme)
 
-```sh
-npm install --save-dev typedoc-plugin-respect-name-tag
-```
+First, edit existing or create new `.npmrc` file in your project root, and add:
 
-Typedoc has the ability to discover and load typedoc plugins found in node_modules. Simply install the plugin and run typedoc.
+`@zimmed:registry=https://npm.pkg.github.com`
 
-```
-npm install --save typedoc-plugin-external-module-name
-typedoc
-```
+Then you can use:
+
+`$ npm i --save @zimmed/typedoc-plugin-respect-name-tag`
+
+Typedoc has the ability to discover and load typedoc plugins found in node_modules.
 
 If unsure, you can always run typedoc with `--plugin typedoc-plugin-respect-name-tag` argument to enforce plugin's execution.
 
-# TODO:
+## TODO (from original readme)
 
 - test not only for events but for clases, properties, etc
 - validate @name's value - should be valid ts identifier.

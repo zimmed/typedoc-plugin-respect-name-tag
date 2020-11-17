@@ -2,7 +2,8 @@
   "name": "@zimmed/typedoc-plugin-respect-name-tag",
   "version": "1.1.0",
   "description": "TypeDoc plugin to enforce the use of the @name tag to declare entity names. ",
-  "main": "plugin.js",
+  "main": "dist/plugin.js",
+  "types": "dist/plugin.d.ts",
   "scripts": {
     "test": "echo \"No tests!\"",
     "watch": " tsc --watch",
@@ -19,9 +20,7 @@
     "documentation"
   ],
   "files": [
-    "./plugin.js.map",
-    "./plugin.js",
-    "./plugin.d.ts"
+    "/dist"
   ],
   "authors": [
     "Sebastián Gurin",
