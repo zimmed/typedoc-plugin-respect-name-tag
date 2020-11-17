@@ -50,7 +50,7 @@ Then you can use:
 
 Typedoc has the ability to discover and load typedoc plugins found in node_modules.
 
-If unsure, you can always run typedoc with `--plugin typedoc-plugin-respect-name-tag` argument to enforce plugin's execution.
+If unsure, you can always run typedoc with `--plugin @zimmed/typedoc-plugin-respect-name-tag` argument to enforce plugin's execution.
 
 ## TODO (from original readme)
 
