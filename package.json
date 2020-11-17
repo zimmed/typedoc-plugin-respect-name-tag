@@ -1,13 +1,15 @@
 {
-  "name": "typedoc-plugin-respect-name-tag",
-  "version": "1.0.2",
+  "name": "@zimmed/typedoc-plugin-respect-name-tag",
+  "version": "1.0.3",
   "description": "TypeDoc plugin to enforce the use of the @name tag to declare entity names. ",
   "main": "plugin.js",
   "scripts": {
-    "test": "ts-node -r tsconfig-paths/register node_modules/jasmine/bin/jasmine",
+    "test": "echo \"No tests!\"",
     "watch": " tsc --watch",
     "build": "tsc",
-    "prepare": "tsc"
+    "prepare": "tsc",
+    "prepublish": "npm build",
+    "postinstall": "npm build"
   },
   "keywords": [
     "TypeDoc",
@@ -16,20 +18,38 @@
     "jsdoc",
     "documentation"
   ],
-  "author": "Sebastián Gurin",
+  "files": [
+    "./plugin.js.map",
+    "./plugin.js",
+    "./plugin.d.ts"
+  ],
+  "authors": [
+    "Sebastián Gurin",
+    "zimmed@zimmed.io"
+  ],
   "license": "MIT",
   "peerDependencies": {
     "typedoc": ">=0.7 <1.11.1"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zimmed/typedoc-plugin-respect-name-tag.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zimmed/typedoc-plugin-respect-name-tag/issues"
+  },
+  "homepage": "https://github.com/zimmed/typedoc-plugin-respect-name-tag#readme",
   "devDependencies": {
-    "@types/jasmine": "^2.8.6",
-    "jasmine": "^3.1.0",
-    "shelljs": "^0.8.1",
-    "ts-node": "^6.0.0",
-    "tsconfig-paths": "^3.3.1",
-    "tslint": "^5.9.1",
-    "tslint-config-airbnb": "^5.8.0",
-    "typedoc": "~0.11.1",
-    "typescript": "^2.8.3"
+    "typedoc": "^0.19.2",
+    "typescript": "^4.0.5",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.1.2"
   }
 }

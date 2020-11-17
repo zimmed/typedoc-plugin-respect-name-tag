@@ -3,16 +3,24 @@
     "moduleResolution": "node", 
     "allowJs": true,
     "module": "commonjs",
-    "target": "es2017",
-    "outDir": "./",
+    "target": "es5",
+    "outDir": ".",
     "sourceMap": true,
     "experimentalDecorators": true, 
-    "baseUrl": "."
+    "baseUrl": ".",
+    "declaration": true,
+    "declarationDir": ".",
+    "downlevelIteration": true,
+    "lib": ["esnext"],
+    "strict": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "files": [
     "plugin.ts"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "javascript.validate.enable": true
 }
