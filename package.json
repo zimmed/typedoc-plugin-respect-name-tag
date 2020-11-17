@@ -1,6 +1,6 @@
 {
   "name": "@zimmed/typedoc-plugin-respect-name-tag",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "TypeDoc plugin to enforce the use of the @name tag to declare entity names. ",
   "main": "dist/plugin.js",
   "types": "dist/plugin.d.ts",

@@ -2,6 +2,8 @@ import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/compon
 import { Converter } from 'typedoc/dist/lib/converter/converter';
 import { Reflection } from 'typedoc/dist/lib/models/reflections/abstract';
 import { Context } from 'typedoc/dist/lib/converter/context';
+import { Application } from 'typedoc/dist/lib/application';
+
 /**
  * This plugin will force TypeDoc to use the name declared in &#64;name annotation. For
  * example, the following class declares a an event member named `before:add-to-cart`
@@ -95,8 +97,6 @@ interface RespectNameTagRename {
 
 // Finally we export the plugin class as a TypeDoc Plugin - this is we register it as a
 // TypeDoc component with our name 'respect-name-tag'
-export default function (PluginHost: {
-  owner: { converter: { addComponent: (name: string, plugin: any) => void } };
-}): void {
-  PluginHost.owner.converter.addComponent('respect-name-tag', RespectNameTagPlugin);
+export default function (PluginHost: Application): void {
+  PluginHost.owner.converter.addComponent('respect-name-tag', new RespectNameTagPlugin(PluginHost.owner.converter));
 }
