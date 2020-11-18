@@ -35,9 +35,9 @@ export class RespectNameTagPlugin extends ConverterComponent {
 
   initialize(): void {
     this.listenTo(this.owner, {
-      [Converter.EVENT_BEGIN]: this.onBegin,
-      [Converter.EVENT_CREATE_DECLARATION]: this.onDeclaration,
-      [Converter.EVENT_RESOLVE_BEGIN]: this.onBeginResolve,
+      [Converter.EVENT_BEGIN]: this.onBegin.bind(this),
+      [Converter.EVENT_CREATE_DECLARATION]: this.onDeclaration.bind(this),
+      [Converter.EVENT_RESOLVE_BEGIN]: this.onBeginResolve.bind(this),
     });
   }
 
@@ -97,6 +97,8 @@ interface RespectNameTagRename {
 
 // Finally we export the plugin class as a TypeDoc Plugin - this is we register it as a
 // TypeDoc component with our name 'respect-name-tag'
-export default function (PluginHost: Application): void {
+export function load(PluginHost: Application): void {
   PluginHost.owner.converter.addComponent('respect-name-tag', new RespectNameTagPlugin(PluginHost.owner.converter));
 }
+
+export default load;
